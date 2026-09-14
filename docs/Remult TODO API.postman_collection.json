@@ -1,0 +1,79 @@
+{
+  "info": {
+    "_postman_id": "41b1a7ff-a79f-4180-b843-fd0bbf7d12a6",
+    "name": "Remult TODO API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "29273622"
+  },
+  "item": [
+    {
+      "name": "GET Tasks",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{api_url}}/tasks",
+          "host": [
+            "{{api_url}}"
+          ],
+          "path": [
+            "tasks"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST Task",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"title\": \"Clean car\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{api_url}}/tasks",
+          "host": [
+            "{{api_url}}"
+          ],
+          "path": [
+            "tasks"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST Tasks",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "[\r\n    {\r\n        \"title\": \"Read a book\"\r\n    },{\r\n        \"title\": \"Take a nap\", \"completed\":true \r\n    },{\r\n        \"title\": \"Pay bills\"\r\n    },{\r\n        \"title\": \"Do laundry\"\r\n    }\r\n]",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{api_url}}/tasks",
+          "host": [
+            "{{api_url}}"
+          ],
+          "path": [
+            "tasks"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
