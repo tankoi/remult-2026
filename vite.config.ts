@@ -20,11 +20,11 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
-  esbuild: {
-    tsconfigRaw: {
-      compilerOptions: {
-        experimentalDecorators: true,
-      },
+  // Remult entities use legacy TypeScript decorators. Vite 8 transforms with Oxc,
+  // not esbuild, so the old `esbuild.tsconfigRaw` option here had no effect.
+  oxc: {
+    decorator: {
+      legacy: true,
     },
   },
 })
