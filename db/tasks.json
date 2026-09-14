@@ -6,12 +6,6 @@
     "createdAt": "2026-09-14T16:20:15.673Z"
   },
   {
-    "id": "8ff364c0-975b-44bd-b1a7-7166f5838474",
-    "title": "Clean car",
-    "completed": false,
-    "createdAt": "2026-09-14T16:21:26.242Z"
-  },
-  {
     "id": "19c72a5c-81d2-4593-9f2e-0b96f90843f0",
     "title": "Read a book",
     "completed": false,
@@ -34,5 +28,11 @@
     "title": "Do laundry",
     "completed": false,
     "createdAt": "2026-09-14T16:23:55.703Z"
+  },
+  {
+    "id": "df3bdce6-d03f-4799-996a-9108e6ddd989",
+    "title": "Eat something ",
+    "completed": true,
+    "createdAt": "2026-09-14T16:43:21.346Z"
   }
 ]
