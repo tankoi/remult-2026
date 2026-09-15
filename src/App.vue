@@ -29,6 +29,15 @@ const saveTask = async (task: Task) => {
   }
 }
 
+const deleteTask = async (task: Task) => {
+  try {
+    await taskRepo.delete(task)
+    tasks.value = tasks.value.filter(t => t !== task)
+  } catch (error: unknown) {
+    alert((error as { message: string}).message)    
+  }
+}
+
 onMounted(async () => {
   const items = await taskRepo.find({
     limit: 20,
@@ -59,6 +68,7 @@ onMounted(async () => {
         />
         <input v-model="task.title">
         <button @click="saveTask(task)">Save</button>
+        <button @click="deleteTask(task)">Delete</button>
       </div>
     </main>
   </div>
