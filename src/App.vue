@@ -6,10 +6,14 @@ import { Task } from './shared/Task'
 const taskRepo = remult.repo(Task)
 const tasks = ref<Task[]>([])
 
-onMounted(
-  () => taskRepo.find().then(
-    (items) => (tasks.value = items))
-)
+onMounted(async () => {
+  const items = await taskRepo.find({
+    limit: 20,
+    orderBy: { createdAt: "asc" },
+    //where: { completed: true }
+  })
+  tasks.value = items
+})
 </script>
 
 <template>
