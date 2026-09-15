@@ -7,7 +7,7 @@ const taskRepo = remult.repo(Task)
 const tasks = ref<Task[]>([])
 const newTaskTitle = ref("")
 
-// events
+// events {
 const addTask = async () => {
   try {
     const newTask = await taskRepo.insert({
@@ -21,6 +21,14 @@ const addTask = async () => {
   }
 }
 
+const saveTask = async (task: Task) => {
+  try {
+    await taskRepo.save(task)
+  } catch (error: unknown) {
+    alert((error as { message: string}).message)    
+  }
+}
+
 onMounted(async () => {
   const items = await taskRepo.find({
     limit: 20,
@@ -29,6 +37,7 @@ onMounted(async () => {
   })
   tasks.value = items
 })
+// } events
 </script>
 
 <template>
@@ -43,8 +52,13 @@ onMounted(async () => {
         <button>Add</button>
       </form>
       <div v-for="task in tasks">
-        <input type="checkbox" v-model="task.completed" />
-        {{ task.title }}
+        <input 
+          type="checkbox" 
+          v-model="task.completed" 
+          @change="saveTask(task)"
+        />
+        <input v-model="task.title">
+        <button @click="saveTask(task)">Save</button>
       </div>
     </main>
   </div>
