@@ -5,8 +5,13 @@ import { Task } from './shared/Task'
 
 const taskRepo = remult.repo(Task)
 const tasks = ref<Task[]>([])
-onMounted(() => taskRepo.find().then((items) => (tasks.value = items)))
+
+onMounted(
+  () => taskRepo.find().then(
+    (items) => (tasks.value = items))
+)
 </script>
+
 <template>
   <div>
     <h1>todos</h1>
