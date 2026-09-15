@@ -5,6 +5,21 @@ import { Task } from './shared/Task'
 
 const taskRepo = remult.repo(Task)
 const tasks = ref<Task[]>([])
+const newTaskTitle = ref("")
+
+// events
+const addTask = async () => {
+  try {
+    const newTask = await taskRepo.insert({
+      title: newTaskTitle.value
+    })
+    tasks.value.push(newTask)
+    newTaskTitle.value = ""
+  }
+  catch (error: unknown) {
+    alert((error as {message: string}).message)
+  }
+}
 
 onMounted(async () => {
   const items = await taskRepo.find({
@@ -20,6 +35,13 @@ onMounted(async () => {
   <div>
     <h1>todos</h1>
     <main>
+      <form @submit.prevent="addTask">
+        <input
+          v-model="newTaskTitle"
+          placeholder="What needs to be done"
+        />
+        <button>Add</button>
+      </form>
       <div v-for="task in tasks">
         <input type="checkbox" v-model="task.completed" />
         {{ task.title }}
