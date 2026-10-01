@@ -65,7 +65,10 @@ onMounted(() =>
         <button @click="setAllCompleted(true)">Set All as Completed</button>
         <button @click="setAllCompleted(false)"> Set All as Uncompleted</button>
       </div>
-      <form @submit.prevent="addTask">
+      <form 
+        v-if="taskRepo.metadata.apiInsertAllowed()"
+        @submit.prevent="addTask"
+      >
         <input
           v-model="newTaskTitle"
           placeholder="What needs to be done"
@@ -80,7 +83,12 @@ onMounted(() =>
         />
         <input v-model="task.title">
         <button @click="saveTask(task)">Save</button>
-        <button @click="deleteTask(task)">Delete</button>
+        <button 
+          v-if="taskRepo.metadata.apiDeleteAllowed(task)"
+          @click="deleteTask(task)"
+        >
+          Delete
+        </button>
       </div>
     </main>
   </div>
